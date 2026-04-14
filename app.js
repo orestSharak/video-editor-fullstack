@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 10000;
 const backend = spawn('npm', ['start'], {
     cwd: path.join(__dirname, 'server'),
     shell: true,
-    stdio: 'inherit'
+    stdio: 'inherit',
+    env: { ...process.env, PORT: 3000 }
 });
 
 
