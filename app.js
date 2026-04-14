@@ -10,13 +10,12 @@ const backend = spawn('npm', ['start'], {
     cwd: path.join(__dirname, 'server'),
     shell: true,
     stdio: 'inherit',
-    env: { ...process.env, PORT: 3000 }
+    env: { ...process.env, PORT: '3000' }
 });
 
 
-app.use('/api', createProxyMiddleware({ target: 'http://localhost:3000', changeOrigin: true }));
-app.use('/graphql', createProxyMiddleware({ target: 'http://localhost:3000', changeOrigin: true }));
-
+app.use('/api', createProxyMiddleware({ target: 'http://127.0.0.1:3000', changeOrigin: true }));
+app.use('/graphql', createProxyMiddleware({ target: 'http://127.0.0.1:3000', changeOrigin: true }));
 
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
